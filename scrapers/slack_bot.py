@@ -9,7 +9,7 @@ msg = "Fingers crossed for an eventual success, yeah?"
 try:
     response = client.chat_postMessage(
         channel="#slack-bots",
-        text="Auto-scraping completed successfully!"
+        text="Must change"
     )
     print("Message sent: ", response["ts"])
 except SlackApiError as e:
