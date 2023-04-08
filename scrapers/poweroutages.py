@@ -39,7 +39,6 @@ else:
     print("Failed to retrieve data from API")
 
 slack_api_token = os.environ.get('SLACK_API_TOKEN')
-repo_token = os.environ.get("REPO_TOKEN")
 
 client = WebClient(token=slack_api_token)
 
