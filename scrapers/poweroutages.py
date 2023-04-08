@@ -25,6 +25,7 @@ if response.status_code == 200:
         dt_stamp = parser.parse(row['dt_stamp'])
         if dt_stamp > yesterday:
             filtered_data.append(row)
+    slack_message = ""
     if len(filtered_data) > 1:
         with open('data.csv', 'w', newline='') as csvfile:
             fieldnames = filtered_data[1].keys()
@@ -33,13 +34,15 @@ if response.status_code == 200:
             for row in filtered_data:
                 writer.writerow(row)
         print("Data successfully written to data.csv")
+        slack_message = "Auto-scraping completed successfully! Data has been written to data.csv."
     else:
         print("No data found that meets the filter criteria")
+        slack_message = "Auto-scraping completed. No data found that meets the filter criteria."
 else:
     print("Failed to retrieve data from API")
+    slack_message = "Auto-scraping failed. Unable to retrieve data from API."
 
 slack_api_token = os.environ.get('slack_api_token')
-
 client = WebClient(token=slack_api_token)
 
 try:
