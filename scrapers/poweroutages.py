@@ -42,8 +42,8 @@ else:
     print("Failed to retrieve data from API")
     slack_message = "Auto-scraping failed. Unable to retrieve data from API."
 
-slack_api_token = os.environ.get('slack_api_token')
-client = WebClient(token=slack_api_token)
+slack_token = os.environ.get('slack_api_token')
+client = WebClient(token=slack_token)
 
 try:
     response = client.chat_postMessage(
