@@ -23,7 +23,7 @@ jobs:
       
       - name: run scraper
         env:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.xoxb-3300787831347-5081046955570-GJOcq1R5lh0WWGnrSBr2ELec }}
         run: python scrapers/poweroutages.py
 
       - name: "Commit and push if it changed"
