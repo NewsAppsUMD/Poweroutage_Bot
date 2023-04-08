@@ -23,7 +23,8 @@ jobs:
       
       - name: run scraper
         env:
-          repo-token: ${{ secrets.SLACK_API_TOKEN }}
+          slack_api_token: ${{ secrets.SLACK_API_TOKEN }}
+          repo-token: ${{secrets.REPO_TOEN}}
         run: python scrapers/poweroutages.py
 
       - name: "Commit and push if it changed"
