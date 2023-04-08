@@ -2,7 +2,7 @@ import os
 from slack import WebClient
 from slack.errors import SlackApiError
 
-slack_token = os.environ.get('SLACK_API_TOKEN')
+slack_api_token = os.environ.get('SLACK_API_TOKEN')
 
 client = WebClient(token=slack_token)
 msg = "Fingers crossed for an eventual success, yeah?"
