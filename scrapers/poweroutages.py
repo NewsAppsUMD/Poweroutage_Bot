@@ -49,7 +49,7 @@ try:
     try:
     response = client.chat_postMessage(
         channel="#slack-bots",
-        text="Hi :wave:, Here's the latest poweroutages data:link: <https://bit.ly/shortened_link|data.csv>")
+        text="Hi :wave:, Here's the latest poweroutages data:link: <https://github.com/NewsAppsUMD/Poweroutage_Bot/blob/main/data.csv|:muscle:>")
     print("Message sent: ", response["ts"])
 except SlackApiError as e:
     print("Error sending message: ", e)
