@@ -8,13 +8,9 @@ client = WebClient(token=slack_token)
 msg = "Fingers crossed for an eventual success, yeah?"
 try:
     response = client.chat_postMessage(
-        channel="slack-bots",
-        text=msg,
-        unfurl_links=True, 
-        unfurl_media=True
+        channel="#slack-bots",
+        text="Auto-scraping completed successfully!"
     )
-    print("success!")
+    print("Message sent: ", response["ts"])
 except SlackApiError as e:
-    assert e.response["ok"] is False
-    assert e.response["error"]
-    print(f"Got an error: {e.response['error']}")
+    print("Error sending message: ", e)
