@@ -48,7 +48,7 @@ client = WebClient(token=slack_token)
 try:
     response = client.chat_postMessage(
         channel="#slack-bots",
-        text="Hi :wave:, The bot automatically scrapes the latest data and updates the CSV file for our project:link: https://github.com/NewsAppsUMD/Poweroutage_Bot/blob/main/data.csv|data.csv)
+        text="Hi :wave:, Here's the latest poweroutrages data:link: https://github.com/NewsAppsUMD/Poweroutage_Bot/blob/main/data.csv|data.csv")
     print("Message sent: ", response["ts"])
 except SlackApiError as e:
     print("Error sending message: ", e)
