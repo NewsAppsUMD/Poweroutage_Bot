@@ -19,7 +19,7 @@ else:
 #How to Loop Over
 if response.status_code == 200:
     data = response.json()
-    yesterday = datetime.datetime.now() - timedelta(days=3) # Change this line
+    yesterday = datetime.now() - timedelta(days=3) # Change this line
     filtered_data = []
     for row in data:
         dt_stamp = parser.parse(row['dt_stamp'])
