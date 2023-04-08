@@ -3,6 +3,9 @@ from bs4 import BeautifulSoup
 import csv
 from dateutil import parser
 from datetime import datetime, timedelta
+import os
+from slack_sdk import WebClient
+from slack_sdk.errors import SlackApiError
 
 url = "https://opendata.maryland.gov/resource/nktk-ei6p.json"
 response = requests.get(url)
@@ -34,3 +37,14 @@ if response.status_code == 200:
         print("No data found that meets the filter criteria")
 else:
     print("Failed to retrieve data from API")
+
+client = WebClient(token=os.environ["SLACK_API_TOKEN"])
+
+try:
+    response = client.chat_postMessage(
+        channel="#slack-bots",
+        text="Auto-scraping completed successfully!"
+    )
+    print("Message sent: ", response["ts"])
+except SlackApiError as e:
+    print("Error sending message: ", e)
