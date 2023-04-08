@@ -46,7 +46,7 @@ slack_token = os.environ.get('slack_api_token')
 client = WebClient(token=slack_token)
 
 # Get the current date and time
-now = datetime.datetime.now() # Change this line
+now = datetime.now() # Change this line
 # Format the date and time
 update_time = now.strftime("%Y-%m-%d %H:%M:%S")
 
