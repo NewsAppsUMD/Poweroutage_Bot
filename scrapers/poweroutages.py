@@ -6,6 +6,7 @@ from datetime import datetime, timedelta
 import os
 from slack import WebClient
 from slack.errors import SlackApiError
+import datetime
 
 url = "https://opendata.maryland.gov/resource/nktk-ei6p.json"
 response = requests.get(url)
@@ -45,10 +46,15 @@ else:
 slack_token = os.environ.get('slack_api_token')
 client = WebClient(token=slack_token)
 
+# Get the current date and time
+now = datetime.datetime.now()
+# Format the date and time
+update_time = now.strftime("%Y-%m-%d %H:%M:%S")
+
 try:
     response = client.chat_postMessage(
         channel="#slack-bots",
-        text="Hi :wave:, Here's the latest poweroutages data:link: <https://github.com/NewsAppsUMD/Poweroutage_Bot/blob/main/data.csv|:muscle:>")
+        text=f"Hi :wave:, Here's the latest poweroutrages data:link: <https://github.com/NewsAppsUMD/Poweroutage_Bot/blob/main/data.csv|:muscle:>\nData last updated on: {update_time}")
     print("Message sent: ", response["ts"])
 except SlackApiError as e:
     print("Error sending message: ", e)
