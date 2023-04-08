@@ -53,3 +53,5 @@ try:
     print("Message sent: ", response["ts"])
 except SlackApiError as e:
     print("Error sending message: ", e)
+
+#removed my API token value
