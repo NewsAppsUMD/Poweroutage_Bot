@@ -38,10 +38,8 @@ if response.status_code == 200:
 else:
     print("Failed to retrieve data from API")
 
-slack_token = os.environ.get('SLACK_API_TOKEN')
-client = WebClient(token=slack_token)
-repo_token = os.environ.get['REPO_TOKEN']
-client = WebClient(token=repo_token)
+client = WebClient(token=os.environ["SLACK_API_TOKEN"])
+repo_token = os.environ.get("REPO_TOKEN")
 
 try:
     response = client.chat_postMessage(
