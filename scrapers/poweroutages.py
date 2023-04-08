@@ -6,7 +6,6 @@ from datetime import datetime, timedelta
 import os
 from slack import WebClient
 from slack.errors import SlackApiError
-import datetime
 
 url = "https://opendata.maryland.gov/resource/nktk-ei6p.json"
 response = requests.get(url)
@@ -20,7 +19,7 @@ else:
 #How to Loop Over
 if response.status_code == 200:
     data = response.json()
-    yesterday = datetime.now() - timedelta(days=3)
+    yesterday = datetime.datetime.now() - timedelta(days=3) # Change this line
     filtered_data = []
     for row in data:
         dt_stamp = parser.parse(row['dt_stamp'])
@@ -47,7 +46,7 @@ slack_token = os.environ.get('slack_api_token')
 client = WebClient(token=slack_token)
 
 # Get the current date and time
-now = datetime.datetime.now()
+now = datetime.datetime.now() # Change this line
 # Format the date and time
 update_time = now.strftime("%Y-%m-%d %H:%M:%S")
 
@@ -58,5 +57,3 @@ try:
     print("Message sent: ", response["ts"])
 except SlackApiError as e:
     print("Error sending message: ", e)
-
-
