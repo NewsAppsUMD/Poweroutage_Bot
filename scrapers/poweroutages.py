@@ -4,8 +4,8 @@ import csv
 from dateutil import parser
 from datetime import datetime, timedelta
 import os
-from slack_sdk import WebClient
-from slack_sdk.errors import SlackApiError
+from slack import WebClient
+from slack.errors import SlackApiError
 
 url = "https://opendata.maryland.gov/resource/nktk-ei6p.json"
 response = requests.get(url)
