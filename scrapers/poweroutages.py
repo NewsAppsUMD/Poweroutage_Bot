@@ -40,6 +40,8 @@ else:
 
 slack_token = os.environ.get('SLACK_API_TOKEN')
 client = WebClient(token=slack_token)
+repo_token = os.environ.get["REPO_TOKEN"]
+client = WebClient(token=repo_token)
 
 try:
     response = client.chat_postMessage(
