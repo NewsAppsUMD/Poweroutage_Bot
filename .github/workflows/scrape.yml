@@ -12,18 +12,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-        with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-
+        
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: '3.x'
 
       - name: Install dependencies
-        run: pip install requests bs4 python-dateutil
+        run: pip install requests bs4 python-dateutil slackclient
       
       - name: run scraper
+        env:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
         run: python scrapers/poweroutages.py
 
       - name: "Commit and push if it changed"
