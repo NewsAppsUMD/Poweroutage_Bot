@@ -46,7 +46,6 @@ slack_token = os.environ.get('slack_api_token')
 client = WebClient(token=slack_token)
 
 try:
-    try:
     response = client.chat_postMessage(
         channel="#slack-bots",
         text="Hi :wave:, Here's the latest poweroutages data:link: <https://github.com/NewsAppsUMD/Poweroutage_Bot/blob/main/data.csv|:muscle:>")
