@@ -39,7 +39,7 @@ else:
     print("Failed to retrieve data from API")
 
 slack_token = os.environ.get('SLACK_API_TOKEN')
-    client = WebClient(token=slack_token)
+client = WebClient(token=slack_token)
 
 try:
     response = client.chat_postMessage(
